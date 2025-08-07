@@ -13,13 +13,14 @@ const CampusMap: React.FC<CampusMapProps> = ({ rooms, selectedRooms, onRoomSelec
   const map = useRef<google.maps.Map | null>(null);
   const markers = useRef<any[]>([]);
   const [showTokenInput, setShowTokenInput] = useState(false);
-  
-  const GOOGLE_MAPS_API_KEY = 'AIzaSyCuFOvdXHm84czeEF0NCAaIZKbGl749EiY';
+  const [apiKeyError, setApiKeyError] = useState(false);
+
+  const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   // Group rooms by building
   const buildings = React.useMemo(() => {
     const buildingMap = new Map<string, Building>();
-    
+
     rooms.forEach(room => {
       if (!buildingMap.has(room.shortname)) {
         buildingMap.set(room.shortname, {
@@ -33,7 +34,7 @@ const CampusMap: React.FC<CampusMapProps> = ({ rooms, selectedRooms, onRoomSelec
       }
       buildingMap.get(room.shortname)!.rooms.push(room);
     });
-    
+
     return Array.from(buildingMap.values());
   }, [rooms]);
 
@@ -83,9 +84,9 @@ const CampusMap: React.FC<CampusMapProps> = ({ rooms, selectedRooms, onRoomSelec
       // Create a custom marker element
       const markerElement = document.createElement('div');
       markerElement.className = 'building-marker';
-      
+
       // Check if any rooms in this building are selected
-      const hasSelectedRoom = building.rooms.some(room => 
+      const hasSelectedRoom = building.rooms.some(room =>
         selectedRooms.some(selected => selected.name === room.name)
       );
 
@@ -138,6 +139,11 @@ const CampusMap: React.FC<CampusMapProps> = ({ rooms, selectedRooms, onRoomSelec
   useEffect(() => {
     // Initialize map on component mount
     if (mapContainer.current && !map.current) {
+          if (!GOOGLE_MAPS_API_KEY) {
+      console.error('Google Maps API key is not configured. Please set VITE_GOOGLE_MAPS_API_KEY in your .env file');
+      setApiKeyError(true);
+      return;
+    }
       initializeMap(GOOGLE_MAPS_API_KEY);
     }
   }, []);
@@ -151,7 +157,18 @@ const CampusMap: React.FC<CampusMapProps> = ({ rooms, selectedRooms, onRoomSelec
 
   return (
     <div className="relative w-full h-full">
-      <div ref={mapContainer} className="absolute inset-0 rounded-lg overflow-hidden" />
+      {apiKeyError ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+          <div className="text-center p-6">
+            <div className="text-red-500 text-lg font-semibold mb-2">Google Maps API Key Required</div>
+            <div className="text-gray-600 text-sm">
+              Please set the VITE_GOOGLE_MAPS_API_KEY environment variable in your .env file
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div ref={mapContainer} className="absolute inset-0 rounded-lg overflow-hidden" />
+      )}
       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
         <div className="flex items-center space-x-2">
           <div className="w-4 h-4 bg-campus-blue rounded-full border-2 border-white"></div>
