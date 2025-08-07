@@ -1,0 +1,119 @@
+{
+	"title": "Invalid Value Type",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"LT": {
+						"sections_year": "max"
+					}
+				},
+				{
+					"LT": {
+						"sections_avg": "max"
+					}
+				},
+				{
+					"LT": {
+						"sections_pass": "max"
+					}
+				},
+				{
+					"LT": {
+						"sections_fail": "max"
+					}
+				},
+				{
+					"LT": {
+						"sections_audit": "max"
+					}
+				},
+				{
+					"EQ": {
+						"sections_year": "max"
+					}
+				},
+				{
+					"EQ": {
+						"sections_avg": "max"
+					}
+				},
+				{
+					"EQ": {
+						"sections_pass": "max"
+					}
+				},
+				{
+					"EQ": {
+						"sections_fail": "max"
+					}
+				},
+				{
+					"EQ": {
+						"sections_audit": "max"
+					}
+				},
+				{
+					"GT": {
+						"sections_year": "max"
+					}
+				},
+				{
+					"GT": {
+						"sections_avg": "max"
+					}
+				},
+				{
+					"GT": {
+						"sections_pass": "max"
+					}
+				},
+				{
+					"GT": {
+						"sections_fail": "max"
+					}
+				},
+				{
+					"GT": {
+						"sections_audit": "max"
+					}
+				},
+				{
+					"IS": {
+						"sections_uuid": 25
+					}
+				},
+				{
+					"IS": {
+						"sections_id": 25
+					}
+				},
+				{
+					"IS": {
+						"sections_title": 25
+					}
+				},
+				{
+					"IS": {
+						"sections_instructor": 25
+					}
+				},
+				{
+					"IS": {
+						"sections_dept": 25
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_year",
+				"sections_instructor"
+			],
+			"ORDER": "sections_year"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

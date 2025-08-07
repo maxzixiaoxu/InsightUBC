@@ -1,0 +1,28 @@
+{
+	"title": "References missing",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"ubc_avg": 71.3
+					}
+				},
+				{
+					"IS": {
+						"ubc_dept": "m*"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"ubc_dept",
+				"ubc_avg"
+			],
+			"ORDER": "ubc_avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

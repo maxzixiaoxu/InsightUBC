@@ -1,0 +1,26 @@
+{
+	"title": "Order key not in col",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "math"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_uuid",
+				"sections_id",
+				"sections_title",
+				"sections_instructor",
+				"sections_dept",
+				"sections_year",
+				"sections_avg",
+				"sections_pass",
+				"sections_fail"
+			],
+			"ORDER": "sections_audit"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

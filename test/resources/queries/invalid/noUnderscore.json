@@ -1,0 +1,38 @@
+{
+	"title": "No underscore",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"OR": [
+						{
+							"GT": {
+								"avg": 90
+							}
+						},
+						{
+							"IS": {
+								"dept": "adhe"
+							}
+						}
+					]
+				},
+				{
+					"EQ": {
+						"avg": 95
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"dept",
+				"id",
+				"avg"
+			],
+			"ORDER": "avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

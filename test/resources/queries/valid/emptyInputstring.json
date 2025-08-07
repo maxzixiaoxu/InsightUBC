@@ -1,0 +1,59 @@
+{
+	"title": "Empty inputstring",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"OR": [
+						{
+							"GT": {
+								"sections_pass": 50
+							}
+						},
+						{
+							"IS": {
+								"sections_dept": ""
+							}
+						}
+					]
+				},
+				{
+					"EQ": {
+						"sections_avg": 66.69
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_id",
+				"sections_avg"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "psyc",
+			"sections_id": "320",
+			"sections_avg": 66.69
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_id": "101",
+			"sections_avg": 66.69
+		},
+		{
+			"sections_dept": "math",
+			"sections_id": "101",
+			"sections_avg": 66.69
+		},
+		{
+			"sections_dept": "biol",
+			"sections_id": "121",
+			"sections_avg": 66.69
+		}
+	]
+}

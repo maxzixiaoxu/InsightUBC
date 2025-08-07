@@ -1,0 +1,28 @@
+{
+	"title": "References none",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"avg": 71.3
+					}
+				},
+				{
+					"IS": {
+						"dept": "m*"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"dept",
+				"avg"
+			],
+			"ORDER": "avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

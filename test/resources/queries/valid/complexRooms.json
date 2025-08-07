@@ -1,0 +1,70 @@
+{
+	"title": "complexRooms",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"AND": [
+						{
+							"GT": {
+								"rooms_seats": 90
+							}
+						},
+						{
+							"IS": {
+								"rooms_number": "A203"
+							}
+						}
+					]
+				},
+				{
+					"EQ": {
+						"rooms_seats": 120
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_href",
+				"rooms_furniture",
+				"rooms_type",
+				"rooms_number"
+			],
+			"ORDER": "rooms_number"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"rooms_href": "http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/WOOD-1",
+			"rooms_furniture": "Classroom-Fixed Tables/Movable Chairs",
+			"rooms_type": "Tiered Large Group",
+			"rooms_number": "1"
+		},
+		{
+			"rooms_href": "http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/DMP-110",
+			"rooms_furniture": "Classroom-Fixed Tables/Movable Chairs",
+			"rooms_type": "Tiered Large Group",
+			"rooms_number": "110"
+		},
+		{
+			"rooms_href": "http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/WOOD-4",
+			"rooms_furniture": "Classroom-Fixed Tables/Movable Chairs",
+			"rooms_type": "Tiered Large Group",
+			"rooms_number": "4"
+		},
+		{
+			"rooms_href": "http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/WOOD-5",
+			"rooms_furniture": "Classroom-Fixed Tables/Movable Chairs",
+			"rooms_type": "Tiered Large Group",
+			"rooms_number": "5"
+		},
+		{
+			"rooms_href": "http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/BUCH-A203",
+			"rooms_furniture": "Classroom-Fixed Tables/Fixed Chairs",
+			"rooms_type": "Case Style",
+			"rooms_number": "A203"
+		}
+	]
+}
